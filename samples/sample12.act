@@ -1,0 +1,95 @@
+actor Human (3) {
+        knownactors {
+            Human friend;
+        }
+
+        actorvars {
+            string firstName;
+            string lastName;
+            int birthday[3];
+            int friendBirthday[3];
+            boolean older;
+            boolean isFriendshipALie;
+            int dayCounter;
+            int old;
+        }
+
+        msghandler initial (int day, int month, int year, string firstName, string lastName) {
+            birthday[2] = day;
+            birthday[1] = month;
+            birthday[0] = year;
+            old = 15;
+            dayCounter = 1;
+            isFriendshipALie = false;
+            older = false;
+            self.firstName = firstName;
+            self.lastName = lastName;
+            print(firstName);
+            friend.listenFriendBirthday(birthday);
+        }
+
+        msghandler tellNewsToFriend() {
+            int birthdayOffset;
+            if (older == false)
+                dayCounter = dayCounter + 1;
+            if (friendBirthday[1] == 12)
+                birthdayOffset = 6 * 31 + 5 * 30 + friendBirthday[2];
+            else if (friendBirthday[1] > 6)
+                birthdayOffset = 6 * 31 + (friendBirthday[1] - 7) * 30 + friendBirthday[2];
+            else
+                birthdayOffset = (friendBirthday[1] - 1) * 31 + friendBirthday[2];
+            if (dayCounter % 365 + 1 == birthdayOffset) {
+                if (old < 21)
+                    friend.listenToNews("happy birthdy");
+                else {
+                    isFriendshipALie = true;
+                    friend.listenToNews("friendship is a lie");
+                }
+            }
+            else
+                friend.listenToNews("");
+        }
+
+        msghandler listenToNews (string news) {
+            if (older) {
+                dayCounter = dayCounter + 1;
+            }
+            if (news != "") {
+                print ("\n#########################");
+                print (firstName);
+                print ("my firend said : ");
+                print (news);
+                print ("now I am ");
+                print (++old);
+                print("#########################\n\n\n");
+            }
+            if (old < 23)
+                self.tellNewsToFriend();
+        }
+
+        msghandler listenFriendBirthday (int friendBirthday[3]) {
+            int i;
+            print("man hazeram");
+            self.friendBirthday = friendBirthday;
+            older = false;
+            for (i = 0; i < 3; i = i + 1)
+                if (birthday[i] < friendBirthday[i]) {
+                    older = false;
+                    break;
+                }
+                else if(birthday[i] > friendBirthday[i]) {
+                    older = true;
+                    break;
+                }
+            print("salam");
+            if (older == false)
+                self.tellNewsToFriend();
+        }
+
+}
+
+main {
+    Human iman (behrooz):(30, 1, 1378, "Iman", "Moradi");
+    Human behrooz (iman):(22, 11, 1377, "Ali", "Behroozinia");
+}
+

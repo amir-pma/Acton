@@ -1,0 +1,178 @@
+actor OnlineShop(100) {
+
+    knownactors {
+        Owner owner;
+    }
+
+    actorvars {
+        int income;
+        int A;
+        int B;
+        int C;
+        int index;
+        int reqs[100];
+        boolean open;
+    }
+
+    msghandler initial(int a,int b,int c) {
+        A = a;
+        self.B = b;
+        C = c;
+        income = 0;
+        open = false;
+    }
+
+    msghandler buyA(int num){
+        if(open){
+            if(num<A){
+                income = income + num*1200;
+                A = A - num;
+                self.check();
+            }
+            else print("not available");
+        }
+    }
+
+    msghandler buyB(int num){
+        if(open){
+            if(num<B){
+                income = income + num*2300;
+                B = B - num;
+                self.check();
+            }
+            else print("not available");
+        }
+    }
+
+    msghandler buyC(int num){
+        if(open){
+            if(num<C){
+                income = income + num*4600;
+                C = C - num;
+                self.check();
+            }
+            else print("not available");
+        }
+
+    }
+
+    msghandler check(){
+        if(A == 0 && B == 0 && C == 0){
+            owner.recv(income);
+        }
+    }
+
+    msghandler close(){
+        open = false;
+    }
+
+}
+
+actor Owner(10){
+
+    knownactors {
+        OnlineShop shop;
+    }
+
+    actorvars {
+        int tcash;
+    }
+
+    msghandler recv(int income){
+        tcash = income + tcash;
+        shop.close();
+    }
+
+    msghandler pay(int tcash){
+        if(tcash>0){
+            self.tcash = self.tcash - tcash;
+        }
+    }
+}
+
+actor Bank(10){
+
+    knownactors {
+        Owner o1;
+        Owner o2;
+    }
+
+    actorvars {
+        int tcash;
+    }
+
+    msghandler initial(){
+        tcash = 0;
+        self.com();
+    }
+
+    msghandler com(){
+        int i;
+        i = 54648456;
+        for(;;){
+            i = i * 66235634 + 123423%3242;
+            o1.pay(i%23657);
+            self.tcash = tcash + i%23657;
+            i = i * 66235634 + 123423%3242;
+            o2.pay(i%23657);
+            self.tcash = tcash + i%23657;
+        }
+    }
+}
+
+
+actor User(10){
+
+    knownactors {
+        OnlineShop shop;
+    }
+
+    actorvars {
+        int tcash;
+    }
+
+    msghandler initial(int cash){
+        tcash = cash;
+        self.buy();
+    }
+
+    msghandler buy(){
+        int i;
+        i = 546546546;
+        for(;;){
+            i = i*4534534 + i%435*4;
+            if(i%3==0){
+                shop.buyA(i%3);
+                tcash = self.tcash - 1200;
+            }
+            else if(i%3==1){
+                shop.buyB(i%4);
+                tcash = self.tcash - 2300;
+            }
+            else{
+                shop.buyC(i%2);
+                tcash = self.tcash - 4600;
+            }
+            if(tcash < 0){
+                break;
+            }
+        }
+        print("bye");
+    }
+}
+
+
+
+main {
+    OnlineShop shop1(owner1):(5446,6567,3432);
+    OnlineShop shop2(owner2):(1546,5567,35432);
+    Owner owner1(shop1):();
+    Owner owner2(shop2):();
+    Bank bank(owner1,owner2):();
+    User u1(shop1):(780000);
+    User u2(shop2):(750000);
+    User u3(shop1):(380000);
+    User u4(shop1):(7800600);
+    User u5(shop2):(560000);
+    User u6(shop2):(990000);
+}

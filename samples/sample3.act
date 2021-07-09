@@ -1,0 +1,71 @@
+actor server (10){
+    knownactors{
+
+    }
+    actorvars{
+        string addr;
+        int num_of_users;
+        int total_reqs;
+        boolean is_serve;
+    }
+
+    msghandler initial(string addr,boolean is_serve){
+        self.addr = addr;
+        self.is_serve = is_serve;
+        total_reqs = 0;
+        num_of_users = 0;
+        print(addr);
+    }
+
+    msghandler connect(string name){
+        print("connected:");
+        print(name);
+        num_of_users = num_of_users + 1;
+    }
+
+    msghandler get_num_of_online_users(){
+        if(is_serve){
+            total_reqs = total_reqs + 1;
+            print(addr);
+            print(num_of_users);
+        }
+    }
+}
+
+actor client(3){
+    knownactors{
+        server server;
+        client friend;
+    }
+
+    actorvars{
+        string name;
+        int msg;
+    }
+
+    msghandler initial(string name){
+        self.name = name;
+        self.msg = 0;
+        print(name);
+        server.connect(name);
+        for(;;){
+            server.get_num_of_online_users();
+            friend.im_online();
+            if(msg == 120){
+                print("offline!");
+                break;
+            }
+        }
+    }
+
+    msghandler im_online(){
+        print("online friend!");
+        msg = msg+1;
+    }
+}
+
+main {
+  server s():("server@server",true);
+  client c1(s,c2):("c1@c1");
+  client c2(s,c1):("c2@c2");
+}

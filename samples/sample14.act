@@ -1,0 +1,186 @@
+actor StatementsActor (19) {
+
+    knownactors {
+
+    }
+
+    actorvars {
+        int number;
+        boolean flag;
+        string statement;
+        int array[10];
+
+        int initialArrayTest[10];
+        int initialNumberTest;
+        string initialStringTest;
+        boolean initialBooleanTest;
+    }
+
+    msghandler initial (int number, string str) {
+        self.number = number;
+        statement = str;
+        array [0] = number;
+//        self.expressionStatments(15);
+//        self.ifStatement();
+//        self.initialPrimitiveTest();
+//        self.loopStatement();
+    }
+
+    msghandler expressionStatments (int num) {
+
+        print (statement);
+        print (array);
+        print (num + number);
+        print (number);
+        print (num);
+        print (++num);
+        print (num);
+        print (num++);
+        print (num);
+        num = 2;
+        print (num++ + num++);
+        print (num);
+        num = 2;
+        print (num++ + ++num);
+        print (num);
+        num = 2;
+        print (++num + num++);
+        print (num);
+        num = 2;
+        print(((++num + ++num) * (num * 3 + (-num))));
+        print ("56");
+        num = 13;
+        print (num * number);
+        print (165 / num);
+        print (1003 % num);
+        print (num - 65);
+        print (-num);
+        print (num == num);
+        print (num < 12);
+        print (num == 13);
+        print (num > 12);
+    }
+
+    msghandler initialPrimitiveTest () {
+        int initialArrayTest[10];
+        int initialNumberTest;
+        string initialStringTest;
+        boolean initialBooleanTest;
+        print (initialBooleanTest);
+        print (initialStringTest);
+        print (initialNumberTest);
+        print (initialArrayTest);
+        print (self.initialBooleanTest);
+        print (self.initialStringTest);
+        print (self.initialNumberTest);
+        print (self.initialArrayTest);
+
+    }
+
+    msghandler ifStatement() {
+        boolean flag6;
+        boolean flag2;
+        boolean flag3;
+        boolean flag4;
+        boolean flag5;
+        boolean flag1;
+        flag6 = false;
+        flag1 = (65 > 43 == true) == (false || false || true);     // falg 1 = true
+        print (flag1);
+        print (true && false);
+        print (false && true);
+        print (65 * 2 == 130);
+        print (333 < 222);
+        print (111 % 2 == 1);
+        if (flag6 && (3 != 4))
+            print("flag6 is true");
+        initialArrayTest[0] = 7;
+        print (array);
+        print (initialArrayTest);
+        if (array == initialArrayTest)
+            print ("array = initialArrayTest");
+        else
+            print ("array != initialArrayTest");
+        print ("moradi" == "iman");
+        if ((333 < 222) || (111 % 2 == 1) || ("moradi" == "iman"))
+            if (flag1 && !("iman" == "moradi"))
+                print("wrong");
+            else if (flag1 && !flag1)
+                print ("wrong");
+            else
+                print ("correct");
+        else if (true)
+            print ("wrong");
+        print (flag6);
+        print (flag6 == flag6);
+        print (2 < 3);
+        print ((flag6 == flag6) || (2 < 3));
+        print (flag5 != flag4 && (2 < 3));
+        print (flag2 == false || (2 * 54 < 3));
+        print (false == true || ("2" != "3"));
+    }
+
+    msghandler loopStatement () {
+        int i;
+        int j;
+        int k;
+        int localArray [11];
+        int array[11];
+        int matrix[121];
+        for (i = 0; i < 11; i = i + 1)
+              array[i] = i * i;
+        print("square numbers :");
+        print(array);
+        array[0] = 1;
+        array[1] = 1;
+        for (i = 2; i < 11; i = i + 1)
+            array[i] = array[i-1] + array[i-2];
+        print("fibonacci numbers :");
+        print(array);
+        for (i = 0; ; i = i + 1) {
+            if (i < 3)
+                continue;
+            if (i > 8)
+                break;
+            localArray[i] = i;
+        }
+        print(localArray);
+        for (i = 0; i < 11; i = i + 1) {
+            for (j = 0; j < 11; j = j + 1) {
+                if (i < 5) {
+                    if (j + i < 5)
+                        continue;
+                    if (j - i > 5)
+                        break;
+                    matrix[11 * i + j] = 1;
+                }
+                else {
+                    if (j < i - 5)
+                        continue;
+                    if (j + i > 15)
+                        break;
+                    matrix[11 * i + j] = 1;
+                }
+            }
+        }
+
+        for (i = 0; i < 11; i = i + 1) {
+            for (j = 0; j < 11; j = j + 1) {
+                for (k = 0; k < 11; k = k + 1)
+                    array[k] = matrix[11 * j + k];
+                print (array);
+                if (j == i) {
+                    for (;k < 11; k = k + 1)
+                        print("");
+                    print ("");
+                    break;
+                }
+            }
+        }
+
+    }
+}
+
+main {
+    StatementsActor statement ():(7, "sina");
+}

@@ -1,0 +1,71 @@
+actor Carwash (10){
+    knownactors{
+
+    }
+    actorvars{
+        int clean_factor;
+    }
+
+    msghandler initial(int cf){
+        self.clean_factor = cf;
+    }
+
+    msghandler wash(int deg,int start_deg){
+        for(;deg>start_deg;){
+            start_deg = start_deg + clean_factor;
+        }
+        sender.ready();
+    }
+}
+
+actor Owner(8){
+    knownactors{
+        Car car;
+    }
+
+    actorvars{
+        int car_id;
+    }
+
+    msghandler initial(int id,int deg){
+        car_id = id;
+        car.wash(deg);
+    }
+
+    msghandler ready(){
+        print("car is ready!");
+    }
+}
+
+
+actor Car(8){
+    knownactors{
+        Owner owner;
+        Carwash carwash;
+    }
+
+    actorvars{
+        int clean_deg;
+    }
+
+    msghandler initial(int deg){
+        clean_deg = deg;
+    }
+
+    msghandler wash(int deg){
+        carwash.wash(deg,clean_deg);
+    }
+
+    msghandler ready(){
+        owner.ready();
+    }
+
+}
+
+main {
+  Carwash carwash():(3);
+  Owner o1(c1):(12,126);
+  Owner o2(c2):(13,1216);
+  Car c1(o1,carwash):(12);
+  Car c2(o2,carwash):(67);
+}

@@ -1,0 +1,59 @@
+actor A(4) {
+    knownactors {
+        B b1;
+        B b2;
+        C c;
+    }
+    actorvars {
+
+    }
+    msghandler initial() {
+        boolean f;
+        f = b1 == b2;
+        print(f);
+        f = b1 == b1;
+        print(f);
+        print(b1 == b1);
+        b1.foo();
+    }
+    msghandler bar() {
+        print(sender == b2);
+        print(sender == b1);
+    }
+}
+
+actor B(4) {
+    knownactors {
+        A a;
+        C c;
+    }
+    actorvars {
+
+    }
+    msghandler foo() {
+        boolean f;
+        f = sender == a;
+        print(f);
+        f = a == sender;
+        print(f);
+        f = c == sender;
+        print(f);
+        a.bar();
+    }
+}
+
+actor C(4) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+}
+
+main {
+    A a(b1, b2, c):();
+    B b1(a, c):();
+    B b2(a, c):();
+    C c():();
+}

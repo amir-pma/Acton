@@ -1,0 +1,44 @@
+actor A(10) {
+    knownactors {
+
+    }
+    actorvars {
+        int i;
+        boolean j;
+        string k;
+        int r[5];
+    }
+    msghandler initial(int i, boolean j, string k, int e) {
+        int o;
+        self.i = i + 1;
+        self.j = (j && true) || false;
+        self.k = k;
+        for(o = 1;o<6;o=o+1){
+           r[o-1] = o*3;
+        }
+        print(r);
+        self.foo(e);
+    }
+    msghandler foo(int r) {
+        int i;
+        int j;
+        string u;
+        boolean t;
+        for(i=0;i<5;i=i+1){
+            print(j);
+            j = j + i*i%37;
+            if(j%3==1 && !t){
+                u = "accepted";
+                t = true;
+            }
+            else if(!t){
+                u = "rejected";
+            }
+        }
+        print(u);
+    }
+}
+
+main {
+    A a1():(1,true,"hi",2*6);
+}

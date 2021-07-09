@@ -1,0 +1,95 @@
+actor Fibonacci(2) {
+	knownactors {
+		Square square;
+	}
+
+	actorvars {
+		string name;
+		int number[5];
+		int slot;
+	}
+
+	msghandler initial() {
+		name = "Fibo";
+		square.evaluate(5);
+	}
+
+	msghandler evaluate(int counter){
+		int f1;
+		int f2;
+		int f;
+		if(slot < 5 && number[slot] != -1){
+			f1 = 1;
+			f2 = 1;
+			f = f1 + f2;
+			for(;;){
+				if(f < counter){
+					f1 = f2;
+					f2 = f;
+					f = f1 + f2;
+					continue;
+				}
+				if(f == counter){
+					number[slot] = counter;
+					print(name);
+					print("slots remaining:");
+					print(5 - slot++);
+					print(" ");
+				}
+				break;
+			}
+		}
+		else{
+			if(slot == 5){
+				print(self.number);
+				print(" ");
+				slot = slot + 1;
+			}
+		}
+		sender.evaluate(counter + 1);
+	}
+}
+
+actor Square(2) {
+	knownactors {
+		Fibonacci fibonacci;
+	}
+
+	actorvars {
+		string name;
+		int number[5];
+		int slot;
+	}
+
+	msghandler initial() {
+		name = "Square";
+	}
+
+	
+	msghandler evaluate(int counter) {
+		int i;
+		if (slot < 5){
+			for(i = 0; i < counter; i = i + 1){
+				if(counter == i * i){
+					number[slot] = counter;
+					slot = slot + 1;
+					print(name);
+					print("slots full:");
+					print(slot);
+					print(" "); 
+				}
+			}
+		}
+		if(slot == 5){
+			print(self.number);
+			print(" ");
+			slot = slot + 1;
+		}
+		sender.evaluate(counter + 1);	
+	}
+}
+
+main { 
+	Fibonacci f(s):();
+	Square s(f):();
+}

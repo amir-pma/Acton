@@ -1,0 +1,29 @@
+actor A(10){
+
+    knownactors {
+        A a;
+    }
+
+    actorvars {
+
+    }
+
+    msghandler initial(){
+        a.test();
+        self.test();
+    }
+
+    msghandler test(){
+        if(sender==a){
+            print("hello");
+        }
+        else print("bye");
+    }
+
+}
+
+main{
+
+    A b(a):();
+    A a(b):();
+}

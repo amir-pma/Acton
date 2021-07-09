@@ -1,0 +1,183 @@
+actor PrimeNumberCollection (100) {
+
+	knownactors {
+		PrimeNumberCollection friend;
+	}
+
+	actorvars {
+		int primeNumbers[100];
+		int biggestPrimeNumber;
+		int collectionSize;
+		string collectionName;
+		boolean empty;
+	}
+
+	msghandler initial (string collectionName) {
+		biggestPrimeNumber = -1;
+		collectionSize = 0;
+		self.collectionName = collectionName;
+		empty = true;
+	}
+
+
+	msghandler isPrimeNumberInCollection (int number) {
+		int counter;
+		if (!(number > biggestPrimeNumber)) {
+			for (counter = 0; counter < 100; counter = counter + 1)
+				if (primeNumbers[counter] == number)
+					sender.getResponseAvailable(true);
+				else if (primeNumbers[counter] > number)
+					break;
+			sender.getResponseAvailable(false);
+		}
+	}
+
+	msghandler addPrimeNumberToCollection (int number) {
+		int counter;
+		int i;
+		if (collectionSize == 100) {
+			print ("collection is full");
+			sender.getAddPrimeRespond(false);
+		}
+		else if (!(number > biggestPrimeNumber)) {
+			for (counter = 0; counter < 100; counter = counter + 1) {
+				if (primeNumbers[counter] == number) {
+					print(number);
+					print("number is already available in collection\n");
+					sender.getAddPrimeRespond (false);
+					break;
+				}
+				else if (primeNumbers[counter] < number) {
+					continue;
+				}
+				for (i = collectionSize; counter < i; i = i - 1)
+					primeNumbers[i] = primeNumbers[i-1];
+				primeNumbers[counter] = number;
+				collectionSize = collectionSize + 1;
+				print(number);
+				print("number is added to collection successfully\n");
+				sender.getAddPrimeRespond(true);
+				break;
+			}
+		}
+		else {
+			biggestPrimeNumber = number;
+			primeNumbers[collectionSize++] = number;
+			print (number);
+			print("number is added to collection succsessfully\n");
+			sender.getAddPrimeRespond(true);
+		}
+	}
+
+	msghandler getCollectionName () {
+		print ("\n*******************");
+		print(collectionName);
+		print ("*******************\n");
+	}
+
+	msghandler getCollectionSize () {
+		sender.getCollectionSize (collectionSize);
+	}
+
+	msghandler printCollection () {
+		print (primeNumbers);
+	}
+}
+
+
+actor CollectionCreator (10) {
+
+	knownactors {
+		PrimeNumberCollection collection;
+	}
+
+	actorvars {
+		int range;
+		string name;
+		boolean getRespond;
+		boolean finishCollecting;
+		int collectionSize;
+		string collectionName;
+		int counter;
+		int testPrimes[10];
+		int testPrimesCounter;
+	}
+
+	msghandler initial (int range, string name) {
+		self.range = range;
+		self.name = name;
+		getRespond = false;
+		counter = 1;
+		testPrimes[0] = 541;
+		testPrimes[1] = 47;
+		testPrimes[2] = 177;
+		testPrimes[3] = 127;
+		testPrimes[4] = 431;
+		testPrimes[5] = 53;
+		testPrimes[6] = 179;
+		testPrimes[7] = 167;
+		testPrimes[8] = 217;
+		testPrimes[9] = 203;
+		testPrimesCounter = 0;
+		self.testCollection();
+
+	}
+
+	msghandler testCollection () {
+		int i;
+		int j;
+		boolean isPrime;
+		counter = counter + 1;
+		if (counter < range) {
+		    for (; counter < range; counter = counter + 1) {
+    		    isPrime = true;
+                for (j = 2; j < counter; j = j + 1)
+                    if (counter% j == 0) {
+                        isPrime = false;
+                        break;
+                    }
+                if (isPrime) {
+                    collection.addPrimeNumberToCollection(counter);
+                    break;
+                }
+            }
+	    }
+	    if (!(counter < range) && testPrimesCounter != 10) {
+	    	finishCollecting = true;
+	    	testPrimesCounter = testPrimesCounter + 1;
+	    	finishCollecting = testPrimesCounter == 10;
+	    	collection.addPrimeNumberToCollection(testPrimes[testPrimesCounter-1]);
+	    }
+
+	}
+
+	msghandler getCollectionSize (int size) {
+		collectionSize = size;
+		print ("\n\n###########\nthere is ");
+		print (collectionSize);
+		print ("prime numbers in collection\n###########\n\n");
+	}
+
+    msghandler getResponseAvailable (boolean isInCollection) {
+    	getRespond = true;
+    }
+
+    msghandler getAddPrimeRespond (boolean successful) {
+    	if (!finishCollecting)
+ 	        self.testCollection ();
+	    else {
+	    	collection.getCollectionName();
+	    	collection.printCollection();
+	    	collection.getCollectionSize();
+	    }
+    }
+
+}
+
+
+main {
+	CollectionCreator creator (collection):(100, "Iman Moradi creator");
+	PrimeNumberCollection collection (collection):("Iman Moradi Collection");
+}
+
+

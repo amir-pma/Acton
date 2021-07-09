@@ -1,0 +1,38 @@
+actor A(4) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler reciever(int i) {
+        print("recieved:");
+        print(i);
+    }
+}
+
+actor B(1) {
+    knownactors {
+        A a;
+    }
+    actorvars {
+
+    }
+    msghandler initial() {
+        self.send();
+    }
+
+    msghandler send() {
+        int j;
+        for(j = 0; j < 10; j = j + 1) {
+            print("sent:");
+            print(j);
+            a.reciever(j);
+        }
+    }
+}
+
+main {
+    B b(a):();
+    A a():();
+}

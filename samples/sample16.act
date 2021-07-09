@@ -1,0 +1,788 @@
+actor U extends L(5) {
+    knownactors {
+        L l;
+    }
+    actorvars {
+
+    }
+}
+
+actor K extends P(4) {
+    knownactors {
+        A a;
+    }
+    actorvars {
+
+    }
+}
+
+actor J extends K(6) {
+    knownactors {
+        U t;
+        K r;
+    }
+    actorvars {
+        int i;
+    }
+    msghandler initial(int a, string b, boolean c) {
+
+    }
+}
+
+actor A(4) {
+    knownactors {
+        J j;
+        K k;
+        U kk;
+        P pe;
+    }
+    actorvars {
+        int a;
+        string f;
+        int y;
+        int ff[3];
+    }
+    msghandler initial(int a[5], string b) {
+        a = 2 + "salam";
+    }
+    msghandler goo(int l) {
+        kk = j;
+        pe = j;
+        pe = pe + 1;
+        2 = true;
+        2 = "hi" - 2;
+        k = sender;
+        sender = k;
+        k = k = k = k;
+        a = a = a;
+        f = f = f;
+        ff = ff = ff;
+    }
+}
+
+actor B extends A(5) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler loo() {
+        self.a = i;
+    }
+}
+
+actor C extends B(2) {
+    knownactors {
+        A a1;
+        B b;
+        C c;
+    }
+    actorvars {
+        int r;
+        int i;
+    }
+    msghandler initial(int a, int b1) {
+        a1 = b;
+        a1 = b1;
+        b = a1;
+        a1 = a1;
+        a1 = c;
+        c = a1;
+        a1 = b = c;
+        c = b = a1 = a1;
+        sender = 5;
+        a1 = sender;
+        sender = sender;
+        a1 = sender = sender;
+        r = sender++;
+        r = sender + 5;
+    }
+    msghandler foo() {
+        int y[3];
+        int u[4];
+        int i[3];
+        boolean e;
+        f = 3;
+        t = 3;
+        y = 3 % 6;
+        r = (r + r)++;
+        r = (r + "hi")--;
+        r = (self.mn)++;
+        r = --(self.r + r);
+        r = ++(2) + --("hi");
+        r = (b == c)--;
+        r = (b = c)--;
+        r = t == u;
+        r = y == i;
+        e = y == u;
+        e = y == i;
+        e = (2+8*1 > 1*44-(3%3)) == !(true && false || e);
+        e = rt == true;
+        r = b++ - --r;
+        self.e = r == 1;
+        e = r == (2 * 3);
+        self.r = r + (r);
+        sender = a1;
+        self.r = self.r;
+    }
+}
+
+actor R(6) {
+    knownactors {
+
+    }
+    actorvars {
+        int r;
+    }
+}
+
+actor D extends R(4) {
+    knownactors {
+        P p;
+        A a1;
+        I i;
+    }
+    actorvars {
+        int array1[2];
+        int array2[2];
+        int array3[5];
+    }
+
+    msghandler initial() {
+        sender = 5;
+        a1 = sender;
+        sender = sender;
+        r = sender++;
+        r = sender + 5;
+    }
+    msghandler foo() {
+        int a;
+        int b[5];
+        int c[6];
+        int d;
+        string e;
+        boolean f;
+        a = b;
+        a = e;
+        a = f;
+        a = u;
+        b = f;
+        b = c;
+        e = e;
+        d = a;
+        b = b + c;
+        a = d[2];
+        a = b[d];
+        a = b[e];
+        a = b[f];
+        a = d[e];
+        a = a++;
+        a = e++;
+        a = f++;
+        a = p++;
+        p = i;
+        a = b = c*2 = a *3;
+        a = 2 = 4 = d;
+        a = array1[2];
+        b = array1[d];
+        array1 = array2;
+        array1 = array3;
+        array1 = a;
+        array1[d + 6] = a;
+        a = a * b / t % 3 && 4 || "salam";
+        a = h && j;
+        f = true || false;
+        f = f && true || f == true;
+        f = a != 4 == 6;
+        f + f++ = true * a;
+        uu = op + op - "salam" / tt;
+    }
+}
+
+actor X(7) {
+    knownactors {
+        A y;
+    }
+    actorvars {
+        int a;
+        string b;
+        boolean c;
+    }
+    msghandler foo() {
+        int i;
+        if(a) {
+            a = 3;
+            print(y);
+        }
+        else
+            if(c && true)
+                print(b);
+        for(i = true; i && false; i = i % 4) {
+            print(g);
+        }
+        break;
+        for(i = 1; i < a; i = a = 2 = "salam") {
+            for(i = 0; i < 2; i = i + 1) {
+                continue;
+            }
+            break;
+        }
+        continue;
+        if(true) {
+
+        }
+    }
+}
+
+actor N extends M(3) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler foo(int t) {
+
+    }
+}
+
+actor M(4) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler goo(int a[4], int b[3], int r, string t) {
+
+    }
+}
+
+actor Z(4) {
+    knownactors {
+
+    }
+    actorvars {
+        int y[3];
+    }
+    msghandler goo(string r) {
+
+    }
+}
+
+actor V extends Z(6) {
+    knownactors {
+        M m;
+        N n;
+        C c;
+    }
+    actorvars {
+        int t;
+        string o;
+        int z[4];
+        int e;
+    }
+    msghandler initial(int a[2]) {
+        boolean u;
+        string e;
+        self.foo();
+        self.goo();
+        self.goo(o);
+        self.goo(self.o);
+        self.boo(2 - self.t);
+        n.goo(z, z, self.t, o);
+        sender.roo(sender, self.u, self.t && true);
+        z[self.o] = z[1];
+        z[t + self.t] = t > 4;
+        z[1] = t;
+        z[t] = sender - 5;
+        sender = sender++;
+        n = sender;
+        m = sender-- + n;
+        u = e == e;
+        u = e == self.e;
+        u = m == n;
+        u = m == n == m;
+        u = m == n == false;
+        u = false == m == n;
+        n = m == n = n;
+        m = m == (n = n);
+        if(n) {
+            print(m + 3);
+        }
+        else
+            print(e);
+    }
+    msghandler foo() {
+        int h;
+        boolean e;
+        int i[5];
+        self.foo();
+        self.foo(3);
+        self.foo(3 - true, u - 1, t + 2);
+        self.boo(t, o);
+        self.boo(t);
+        self.boo();
+        self.boo(t * 5 - (true == false));
+        self.goo(t);
+        self.goo(u - 7, 7 + t * 22);
+        self.goo(o);
+        self.goo();
+        sender.foo();
+        sender.foo(2+"salam");
+        sender.goo(a, !(1 - 3));
+        self.goo(o, 7);
+        o.foo(4);
+        o.foo(u - 1, "hi" + "hello", !1);
+        e.goo();
+        e.goo(2 + false);
+        i.foo("hi" / true);
+        t.foo();
+        t.foo(3 - hi);
+        m.roo();
+        m.roo(h, 2 + true);
+        ll.foo();
+        n.foo();
+        n.goo();
+        n.roo(y);
+        n.foo(t);
+        n.foo(t, o);
+        n.foo(t - 3);
+        n.goo(2);
+        n.goo(t, t, t, o);
+        m.goo(t, t, t, o);
+        n.goo(z, i, t, o);
+        n.goo(z, y + z, t - 1, o + t);
+        n.goo(z, y, 5 % t, o + "salam");
+        n.goo(z, y, 5 % t, o);
+        n.goo(z, self.h, sender, o);
+        self.foo(self.h, self.t, sender, i[4], t[6], t[o], i[o]);
+
+    }
+    msghandler boo(int t) {
+
+    }
+}
+
+main {
+    L a1() : ();
+    L a2() : ();
+    LL a3(a1, a0) : ();
+    LLL a4() : (b && !(false), 6 + "salam", 7 * ("salam" + (2 || true && (3) == 2)));
+    LLLL a5(a_0, a2, a0) : (7, 5 + true, !1, "ti", b - a, 9 - 4 % 5);
+    U a6():();
+    K a7(a5):();
+    U a8(a0):(!1, "ti", b * 3 * "hi" - true == !false && 44);
+    J a9(a5):();
+    P a10():();
+    J a11(a5, a10):("a", "ty", !true);
+    J a12(a6, a7):(0, "ty", !true == false);
+    A a13(a9, a9):(2, "hi");
+    B a14():();
+    C a15(a13, a13, a13):(2);
+    C a16():();
+    C a17(a13, a14, a15):(2);
+    C a18(a13, a14, a15):();
+    C a19(a20, a20, a20):();
+    C a20(a15, a15, a17):();
+    C a21(a15, a15, a17, a10):(2, "hi" + 3);
+    U a22(a6):();
+    C a23(a17,a17,a17):(self.s, sender, 2);
+    C a24(a17, a17, a17):(a17);
+    C a25(a17, a17, a17):(a1, a0);
+}
+actor U extends L(5) {
+    knownactors {
+        L l;
+    }
+    actorvars {
+
+    }
+}
+
+actor K extends P(4) {
+    knownactors {
+        A a;
+    }
+    actorvars {
+
+    }
+}
+
+actor J extends K(6) {
+    knownactors {
+        U t;
+        K r;
+    }
+    actorvars {
+        int i;
+    }
+    msghandler initial(int a, string b, boolean c) {
+
+    }
+}
+
+actor A(4) {
+    knownactors {
+        J j;
+        K k;
+        U kk;
+        P pe;
+    }
+    actorvars {
+        int a;
+        string f;
+        int y;
+        int ff[3];
+    }
+    msghandler initial(int a[5], string b) {
+        a = 2 + "salam";
+    }
+    msghandler goo(int l) {
+        kk = j;
+        pe = j;
+        pe = pe + 1;
+        2 = true;
+        2 = "hi" - 2;
+        k = sender;
+        sender = k;
+        k = k = k = k;
+        a = a = a;
+        f = f = f;
+        ff = ff = ff;
+    }
+}
+
+actor B extends A(5) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler loo() {
+        self.a = i;
+    }
+}
+
+actor C extends B(2) {
+    knownactors {
+        A a1;
+        B b;
+        C c;
+    }
+    actorvars {
+        int r;
+        int i;
+    }
+    msghandler initial(int a, int b1) {
+        a1 = b;
+        a1 = b1;
+        b = a1;
+        a1 = a1;
+        a1 = c;
+        c = a1;
+        a1 = b = c;
+        c = b = a1 = a1;
+        sender = 5;
+        a1 = sender;
+        sender = sender;
+        a1 = sender = sender;
+        r = sender++;
+        r = sender + 5;
+    }
+    msghandler foo() {
+        int y[3];
+        int u[4];
+        int i[3];
+        boolean e;
+        f = 3;
+        t = 3;
+        y = 3 % 6;
+        r = (r + r)++;
+        r = (r + "hi")--;
+        r = (self.mn)++;
+        r = --(self.r + r);
+        r = ++(2) + --("hi");
+        r = (b == c)--;
+        r = (b = c)--;
+        r = t == u;
+        r = y == i;
+        e = y == u;
+        e = y == i;
+        e = (2+8*1 > 1*44-(3%3)) == !(true && false || e);
+        e = rt == true;
+        r = b++ - --r;
+        self.e = r == 1;
+        e = r == (2 * 3);
+        self.r = r + (r);
+        sender = a1;
+        self.r = self.r;
+    }
+}
+
+actor R(6) {
+    knownactors {
+
+    }
+    actorvars {
+        int r;
+    }
+}
+
+actor D extends R(4) {
+    knownactors {
+        P p;
+        A a1;
+        I i;
+    }
+    actorvars {
+        int array1[2];
+        int array2[2];
+        int array3[5];
+    }
+
+    msghandler initial() {
+        sender = 5;
+        a1 = sender;
+        sender = sender;
+        r = sender++;
+        r = sender + 5;
+    }
+    msghandler foo() {
+        int a;
+        int b[5];
+        int c[6];
+        int d;
+        string e;
+        boolean f;
+        a = b;
+        a = e;
+        a = f;
+        a = u;
+        b = f;
+        b = c;
+        e = e;
+        d = a;
+        b = b + c;
+        a = d[2];
+        a = b[d];
+        a = b[e];
+        a = b[f];
+        a = d[e];
+        a = a++;
+        a = e++;
+        a = f++;
+        a = p++;
+        p = i;
+        a = b = c*2 = a *3;
+        a = 2 = 4 = d;
+        a = array1[2];
+        b = array1[d];
+        array1 = array2;
+        array1 = array3;
+        array1 = a;
+        array1[d + 6] = a;
+        a = a * b / t % 3 && 4 || "salam";
+        a = h && j;
+        f = true || false;
+        f = f && true || f == true;
+        f = a != 4 == 6;
+        f + f++ = true * a;
+        uu = op + op - "salam" / tt;
+    }
+}
+
+actor X(7) {
+    knownactors {
+        A y;
+    }
+    actorvars {
+        int a;
+        string b;
+        boolean c;
+    }
+    msghandler foo() {
+        int i;
+        if(a) {
+            a = 3;
+            print(y);
+        }
+        else
+            if(c && true)
+                print(b);
+        for(i = true; i && false; i = i % 4) {
+            print(g);
+        }
+        break;
+        for(i = 1; i < a; i = a = 2 = "salam") {
+            for(i = 0; i < 2; i = i + 1) {
+                continue;
+            }
+            break;
+        }
+        continue;
+        if(true) {
+
+        }
+    }
+}
+
+actor N extends M(3) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler foo(int t) {
+
+    }
+}
+
+actor M(4) {
+    knownactors {
+
+    }
+    actorvars {
+
+    }
+    msghandler goo(int a[4], int b[3], int r, string t) {
+
+    }
+}
+
+actor Z(4) {
+    knownactors {
+
+    }
+    actorvars {
+        int y[3];
+    }
+    msghandler goo(string r) {
+
+    }
+}
+
+actor V extends Z(6) {
+    knownactors {
+        M m;
+        N n;
+        C c;
+    }
+    actorvars {
+        int t;
+        string o;
+        int z[4];
+        int e;
+    }
+    msghandler initial(int a[2]) {
+        boolean u;
+        string e;
+        self.foo();
+        self.goo();
+        self.goo(o);
+        self.goo(self.o);
+        self.boo(2 - self.t);
+        n.goo(z, z, self.t, o);
+        sender.roo(sender, self.u, self.t && true);
+        z[self.o] = z[1];
+        z[t + self.t] = t > 4;
+        z[1] = t;
+        z[t] = sender - 5;
+        sender = sender++;
+        n = sender;
+        m = sender-- + n;
+        u = e == e;
+        u = e == self.e;
+        u = m == n;
+        u = m == n == m;
+        u = m == n == false;
+        u = false == m == n;
+        n = m == n = n;
+        m = m == (n = n);
+        if(n) {
+            print(m + 3);
+        }
+        else
+            print(e);
+    }
+    msghandler foo() {
+        int h;
+        boolean e;
+        int i[5];
+        self.foo();
+        self.foo(3);
+        self.foo(3 - true, u - 1, t + 2);
+        self.boo(t, o);
+        self.boo(t);
+        self.boo();
+        self.boo(t * 5 - (true == false));
+        self.goo(t);
+        self.goo(u - 7, 7 + t * 22);
+        self.goo(o);
+        self.goo();
+        sender.foo();
+        sender.foo(2+"salam");
+        sender.goo(a, !(1 - 3));
+        self.goo(o, 7);
+        o.foo(4);
+        o.foo(u - 1, "hi" + "hello", !1);
+        e.goo();
+        e.goo(2 + false);
+        i.foo("hi" / true);
+        t.foo();
+        t.foo(3 - hi);
+        m.roo();
+        m.roo(h, 2 + true);
+        ll.foo();
+        n.foo();
+        n.goo();
+        n.roo(y);
+        n.foo(t);
+        n.foo(t, o);
+        n.foo(t - 3);
+        n.goo(2);
+        n.goo(t, t, t, o);
+        m.goo(t, t, t, o);
+        n.goo(z, i, t, o);
+        n.goo(z, y + z, t - 1, o + t);
+        n.goo(z, y, 5 % t, o + "salam");
+        n.goo(z, y, 5 % t, o);
+        n.goo(z, self.h, sender, o);
+        self.foo(self.h, self.t, sender, i[4], t[6], t[o], i[o]);
+
+    }
+    msghandler boo(int t) {
+
+    }
+}
+
+main {
+    L a1() : ();
+    L a2() : ();
+    LL a3(a1, a0) : ();
+    LLL a4() : (b && !(false), 6 + "salam", 7 * ("salam" + (2 || true && (3) == 2)));
+    LLLL a5(a_0, a2, a0) : (7, 5 + true, !1, "ti", b - a, 9 - 4 % 5);
+    U a6():();
+    K a7(a5):();
+    U a8(a0):(!1, "ti", b * 3 * "hi" - true == !false && 44);
+    J a9(a5):();
+    P a10():();
+    J a11(a5, a10):("a", "ty", !true);
+    J a12(a6, a7):(0, "ty", !true == false);
+    A a13(a9, a9):(2, "hi");
+    B a14():();
+    C a15(a13, a13, a13):(2);
+    C a16():();
+    C a17(a13, a14, a15):(2);
+    C a18(a13, a14, a15):();
+    C a19(a20, a20, a20):();
+    C a20(a15, a15, a17):();
+    C a21(a15, a15, a17, a10):(2, "hi" + 3);
+    U a22(a6):();
+    C a23(a17,a17,a17):(self.s, sender, 2);
+    C a24(a17, a17, a17):(a17);
+    C a25(a17, a17, a17):(a1, a0);
+}
